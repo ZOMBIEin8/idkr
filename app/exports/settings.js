@@ -240,5 +240,5 @@ val: '',
 		html: function () {
 			return window._clientUtil.genCSettingsHTML(this);
 		}
-	};
-
+	}
+};
