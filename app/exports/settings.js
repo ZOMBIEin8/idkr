@@ -217,28 +217,28 @@ val: '',
 }
 
 
-  // },
-	// enableUserscripts: {
-	// 	name: 'Enable Userscripts',
-	// 	id: 'enableUserscripts',
-	// 	cat: 'Maintenance',
-	// 	type: 'checkbox',
-	// 	val: false,
-	// 	needsRestart: true,
-	// 	html: function () {
-	// 		return window._clientUtil.genCSettingsHTML(this);
-	// 	}
-	// },
-	// userscriptsPath: {
-	// 	name: 'Userscripts Path',
-	// 	id: 'userscriptsPath',
-	// 	cat: 'Maintenance',
-	// 	type: 'text',
-	// 	val: '',
-	// 	placeholder: 'Userscripts Folder Path',
-	// 	needsRestart: true,
-	// 	html: function () {
-	// 		return window._clientUtil.genCSettingsHTML(this);
-	// 	}
-	// }
+  },
+	enableUserscripts: {
+		name: 'Enable Userscripts',
+		id: 'enableUserscripts',
+		cat: 'Maintenance',
+		type: 'checkbox',
+		val: false,
+		needsRestart: true,
+		html: function () {
+			return window._clientUtil.genCSettingsHTML(this);
+		}
+	},
+	userscriptsPath: {
+		name: 'Userscripts Path',
+		id: 'userscriptsPath',
+		cat: 'Maintenance',
+		type: 'text',
+		val: '',
+		placeholder: 'Userscripts Folder Path',
+		needsRestart: true,
+		html: function () {
+			return window._clientUtil.genCSettingsHTML(this);
+		}
+	}
 };

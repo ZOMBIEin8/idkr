@@ -51,52 +51,52 @@ window._clientUtil = {
 		}, delay);
 	},
 	loadScripts: function () {
-		// class Userscript {
-		// 	constructor(initiator) {
-		// 		this.name = initiator.name || 'Unnamed userscript';
-		// 		this.version = initiator.version || 'Version unknown';
-		// 		this.author = initiator.author || 'Unknown author';
-		// 		this.description = initiator.description || 'No description provided';
-		// 		this.locations = initiator.locations || ['all'];
-		// 		this.platforms = initiator.platforms || ['all'];
-		// 		this.settings = initiator.settings || null;
-		// 		this.run = initiator.run || null;
-		// 	}
+		class Userscript {
+			constructor(initiator) {
+				this.name = initiator.name || 'Unnamed userscript';
+				this.version = initiator.version || 'Version unknown';
+				this.author = initiator.author || 'Unknown author';
+				this.description = initiator.description || 'No description provided';
+				this.locations = initiator.locations || ['all'];
+				this.platforms = initiator.platforms || ['all'];
+				this.settings = initiator.settings || null;
+				this.run = initiator.run || null;
+			}
 
-		// 	isLocationMatching() {
-		// 		return this.locations.some(location => ['all', windowType].includes(location));
-		// 	}
-		// 	isPlatformMatching() {
-		// 		return this.platforms.some(platform => ['all', process.platform].includes(platform));
-		// 	}
-		// }
+			isLocationMatching() {
+				return this.locations.some(location => ['all', windowType].includes(location));
+			}
+			isPlatformMatching() {
+				return this.platforms.some(platform => ['all', process.platform].includes(platform));
+			}
+		}
 
-		// let userscriptsDirConfig = config.get('userscriptsPath', '');
-		// let scriptsPath = isValidPath(userscriptsDirConfig) ? userscriptsDirConfig : path.join(documentsPath, 'idkr/scripts');
-		// try {
-		// 	fs.readdirSync(scriptsPath).filter(filename => path.extname(filename).toLowerCase() == '.js').forEach(filename => {
-		// 		try {
-		// 			let script = new Userscript(require(path.join(scriptsPath, filename)));
-		// 			if (!script.isLocationMatching()) {
-		// 				console.log(`[USH] Ignored, location not matching: ${script.name}`);
-		// 			} else if (!script.isPlatformMatching()) {
-		// 				console.log(`[USH] Ignored, platform not matching: ${script.name}`);
-		// 			} else {
-		// 				if (script.settings) {
-		// 					Object.assign(window._clientUtil.settings, script.settings);
-		// 				}
-		// 				if (script.run) {
-		// 					script.run(config);
-		// 				}
-		// 				console.log(`[USH] Loaded userscript: ${script.name} by ${script.author}`);
-		// 			}
-		// 		} catch (err) {
-		// 			console.error('[USH] Failed to load userscript:', err);
-		// 		}
-		// 	});
-		// } catch (err) {
-		// 	console.error('[USH] Failed to load scripts:', err);
-		// }
+		let userscriptsDirConfig = config.get('userscriptsPath', '');
+		let scriptsPath = isValidPath(userscriptsDirConfig) ? userscriptsDirConfig : path.join(documentsPath, 'idkr/scripts');
+		try {
+			fs.readdirSync(scriptsPath).filter(filename => path.extname(filename).toLowerCase() == '.js').forEach(filename => {
+				try {
+					let script = new Userscript(require(path.join(scriptsPath, filename)));
+					if (!script.isLocationMatching()) {
+						console.log(`[USH] Ignored, location not matching: ${script.name}`);
+					} else if (!script.isPlatformMatching()) {
+						console.log(`[USH] Ignored, platform not matching: ${script.name}`);
+					} else {
+						if (script.settings) {
+							Object.assign(window._clientUtil.settings, script.settings);
+						}
+						if (script.run) {
+							script.run(config);
+						}
+						console.log(`[USH] Loaded userscript: ${script.name} by ${script.author}`);
+					}
+				} catch (err) {
+					console.error('[USH] Failed to load userscript:', err);
+				}
+			});
+		} catch (err) {
+			console.error('[USH] Failed to load scripts:', err);
+		}
 	},
 	setCSSVal: (name, val) => {
 		config.set(name, val);
@@ -166,9 +166,9 @@ if (windowType == 'game') {
 	window._clientUtil.initUtil();
 }
 
-// if (config.get('enableUserscripts', false)) {
-// 	window._clientUtil.loadScripts();
-// }
+if (config.get('enableUserscripts', false)) {
+	window._clientUtil.loadScripts();
+}
 
 switch (windowType) {
 	case 'game':
